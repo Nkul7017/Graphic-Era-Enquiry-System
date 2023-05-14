@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+         body{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat ;
+            height:auto;
+            width:98vw;
+
+            background-image: url(https://uat.dl.geu.ac.in/uploads/image/geu-campus-main-front-image.jpg) ;
+        }
+        @media (max-width: 1122px) {
+    body {
+      background-size: cover;
+      background-position:-350px;
+    }}
+        .table-cont{
+             min-width: 700px; 
+            overflow: auto;
+        }
+        @media (max-width:772px) {
+            .table-cont{
+            min-width:auto;
+            width:auto; overflow:auto ;
+        }
+        }
+ .table-cont{
+    height:300px;width:auto; overflow: auto;
+ }
+ 
+ input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.img1{
+    width: 175px;
+    height:150px;
+    padding:2px;
+    box-shadow: 5px 5px 15px black;
+    border-radius:10px;
+}
+    </style>
+</head>
+<body  class="p-5"  >
+    <div class="container">
+        <form  id="frm1" class=" frm1 border-1 rounded-2" style=" padding: 20px;  box-shadow: 5px 5px 20px black;background: -webkit-linear-gradient(left, #f48560e6, #e80734c3);" >
+            <h1 class=" text-center mb-3 fw-bolder  " style="color:white;text-shadow: 2px 2px 10px black;">REGISTRATION</h1>
+            <div class="row mb-3">
+                <div class="col ">
+                    <div class="col-md-2 "> 
+                        <div id="photoPreview"></div>
+        <button type="button" id="start-camera" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Capture()">
+            Click Photo
+          </button>
+          <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  ">
+              <div class="modal-content ">
+                <div class="modal-header bg-primary ">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Profile Capture</h1>
+                  <button type="button" class="btn btn-close btn-primary" onclick="cancel()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                   <video id="video" width="320" style="border: 1px solid black;border-radius:10px;" height="240" autoplay></video>
+                   <button id="click-photo" type="button" class="btn btn-primary" onclick="Click1()">Click Photo</button>
+                   <canvas id="canvas" style="border: 1px solid black;border-radius:10px;" width="320" height="240"></canvas>
+                   <button id="savephoto" type="button" class="btn btn-primary"  onclick="savePhoto()" >Save Photo</button>
+                   <button type="button" class="btn btn-secondary" onclick="Close()" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row mb-2  ">
+            <div class="col-md-6 ">
+                <label for="Cname" class="fw-bold">Candidate's Name:</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <input type="text" id="Cname" name="Cname" placeholder="Enter..." class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="Fname" class="fw-bold">Father's Name:</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <input type="text" id="Fname" name="Fname"  placeholder="Enter..." class="form-control ">
+            </div>
+        </div>
+       
+        
+        <div class="row mb-3">
+            <div class="col ">
+                <p class="d-inline fw-bolder">Gender: &nbsp;</p>
+                <span class="mb-0 fw-semibold" style="color: blue"></span>
+                <label for="male" class="fw-semibold">Male</label>
+                <input type="radio" id="male" name="gender" class="form-check-input" value="male">
+                <label for="female" class="fw-semibold">Female</label>
+                <input type="radio" id="female" name="gender" class="form-check-input" value="female">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <label for="adrs" class="fw-bold">Address For Correspondence:</label><span class="mb-0 fw-semibold" style="color: blue"></span> <br>
+                <textarea cols="30" rows="2" id="adrs" name="adrs" placeholder="Enter..." class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="Fphone" class="fw-bold">Father's Phone No:</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <input type="number" id="Fphone" name="Fphone" placeholder="Enter..." class="form-control">
+            </div>
+            <div class="col-sm-6">
+                <label for="Cphone" class="fw-bold">Candidate's Phone No</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <input type="number" id="Cphone" name="Cphone" placeholder="Enter..." class="form-control ">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <label for="email" class="fw-bold">Student Email Address</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <input type="email" id="email" name="email" placeholder="Enter..." class="form-control ">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-2">
+                <div class="table-cont">
+                <table id="tbl" class="table table-lg table-container table-hover " >
+                    <tbody>
+                    <tr>
+                      <th><center>Class</center></th>
+                        <th><center>Exam Passed/Appearing</center></th>
+                        <th><center>Board/Univesity</center></th>
+                        <th><center> Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center></th>
+                        <th><center>Percentage(%)</center></th>
+                    </tr>
+                    <tr>
+                        <th>10th</th>
+                        <td><select name="Exam10" id="Exam10" class="form-control">
+                            <option value="select">select</option>
+                            <option value="Passed">Passed</option>
+                            <option value="Appearing">Appearing</option>
+                        </select></td>
+                        <td><select name="Board-university10" id="Board-university10" class="form-control">
+                            <option value="select">select</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="ICSE">ICSE</option>
+                        </select></td>  
+                        <td><input type="number" placeholder="Enter..." name="Year10" id="Year10" class="form-control year" /></td>
+                        <td><input type="number" placeholder="Enter..." name="Perc10" id="Per10" class="form-control perc" /></td>
+                    </tr>
+                    <tr>
+                        <th>12th</th>
+                        <td><select name="Exam12" id="Exam12" class="form-control">
+                            <option value="select">select</option>
+                            <option value="Passed">Passed</option>
+                            <option value="Appearing">Appearing</option>
+                        </select></td>
+                        <td><select name="Board-university12" id="Board-university12" class="form-control">
+                            <option value="select">select</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="ICSE">ICSE</option>
+                        </select></td> 
+                        <td><input type="number" placeholder="Enter..." name="Year12" id="Year12" class="form-control year" /></td>
+                        <td><input type="number" placeholder="Enter..." name="Perc12" id="Per12" class="form-control perc"  /></td>
+                    </tr>
+                    <tr>
+                        <th>Graduation</th>
+                        <td><select name="Graduate" id="Graduate" class="form-control">
+                            <option value="select">select</option>
+                            <option value="Passed">Passed</option>
+                            <option value="Appearing">Appearing</option>
+                        </select></td>  
+                        <td><select name="University" id="niversity" class="form-control">
+                            <option value="select">select</option>
+                            <option value="GEU">GEU</option>
+                            <option value="GEHU">GEHU</option>
+                            <option value="GEU BHIMTAL">GEU BHIMTAL</option>
+                        </select></td> 
+                        <td><input type="number" placeholder="Enter..."   name="YearGrad" id="YearGrad" class="form-control year" /></td>
+                        <td><input type="number" placeholder="Enter..." name="PerGrad" id="PerGrad" class="form-control perc" /></td>
+                    </tr>
+                    <tr>
+                        <th>Others</th>
+                        <td><select name="Others" id="Others" class="form-control">
+                            <option value="select">select</option>
+                            <option value="Passed">Passed</option>
+                            <option value="Appearing">Appearing</option>
+                        </select></td>
+                        <td><input placeholder="Enter..."  type="text" name="BUOthers" id="BUOthers" class="form-control" /></td>
+                        <td><input type="number" placeholder="Enter..." name="YearOthers" id="YearOthers" class="form-control year" /></td>
+                        <td><input type="number" placeholder="Enter..." name="PerOthers" id="PerOthers" class="form-control perc" /></td>
+                    </tr>
+                </tbody>
+                </table>
+                <span id="tbl-spn" class="mb-0 fw-semibold" style="color: blue"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <label for="phone" class="fw-bold">Program Interested in:</label><span class="mb-0 fw-semibold" style="color: blue"></span>
+                <select name="Interst" id="Interest" class="form-control">
+                    <option value="select">select</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MCA">MCA</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <p class="d-inline fw-bolder">Campus Choice: &nbsp;</p>
+                <span class="mb-0 fw-semibold" style="color: blue"></span> <br>
+                <label for="GEU" class="fw-semibold">GEU Dehradun</label>
+                <input type="radio" id="GEU" name="campus" class="form-check-input" value="GEU Dehradun">
+                <label for="GEHU" class="fw-semibold">GEHU Dehradun</label>
+                <input type="radio" id="GEHU" name="campus" class="form-check-input" value="GEHU Dehradun">
+                <label for="Bhimtal" class="fw-semibold">GEU Bhimtal</label>
+                <input type="radio" id="Bhimtal" name="campus" class="form-check-input" value="GEU Bhimtal">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <p class="d-inline fw-bolder">Entrance Exam Appared: &nbsp;</p> <br>
+                <span class="mb-0 fw-semibold" style="color: blue"></span>
+                <label for="CAT" class="fw-semibold">CAT</label>
+                <input type="radio" id="CAT" name="exam" class="form-check-input" onchange="handle()" value="CAt/MAT">
+                <label for="JEE" class="fw-semibold">JEE MAINS</label>
+                <input type="radio" id="JEE" name="exam" class="form-check-input" onchange="handle()" value="JEE"><br>
+                <div class="row" id="examinfo" style="display:none;">
+                    <div class="col-sm-3">
+                        <label for="cmrno" class="fw-semibold">Roll No:</label> 
+                        <input type="number" placeholder="Enter..." id="cmrno" name="cmrno" class="form-control" >
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="cmscore" class="fw-semibold">Score/Percentile:</label> 
+                        <input type="number" placeholder="Enter..." id="cmscore" name="cmscore" class="form-control" > 
+                    </div>
+                </div> 
+            </div>
+        </div>
+      
+        <div class="row mb-2">
+            <div class="col">
+                <p class="d-inline fw-bolder">How did you come to know about Graphic Era University? &nbsp;</p> <br>
+                <span class="mb-0 fw-semibold" style="color: blue"></span>
+                <label for="Digital" class="fw-semibold">Digital Media</label>
+                <input type="radio" id="Digital" name="know" class="form-check-input" value="male">
+                <label for="Print" class="fw-semibold">Print Media</label>
+                <input type="radio" id="Print" name="know" class="form-check-input" value="female">
+                <label for="Electronic" class="fw-semibold">Electronic Media</label>
+                <input type="radio" id="Electronic" name="know" class="form-check-input" value="female">
+                <label for="OthersM" class="fw-semibold">Others</label>
+                <input type="radio" id="OthersM" name="know" class="form-check-input" value="female">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                <button  type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+        </div>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script>
+              document.body.addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }})
+        document.getElementById("frm1").addEventListener('submit',frm);
+
+        function frm(e)
+        {
+        var Cnam=document.getElementById("Cname").value.trim();
+        if(Cnam.length>2)
+        {     
+            seterror(Cname,"");
+        }
+        else{
+            e.preventDefault();
+            seterror(Cname,"*Enter Name Correctly");
+        }
+        var Fnam=document.getElementById("Fname").value.trim();
+        if(Fnam.length>2)
+        {     
+            seterror(Fname,"");
+        }
+        else{
+            e.preventDefault();
+            seterror(Fname,"*Enter Name Correctly");
+        }
+        var gen=document.getElementsByName("gender")
+        var a=0;
+        gen.forEach((v)=>{
+            if(v.checked)
+            {
+                a=a+1;
+            }
+        })
+        if(a==0)
+        {
+            e.preventDefault();
+           seterror(male,"*Atleast select one item")
+        }
+        else{
+            seterror(male,"")
+        }
+        var addr=document.getElementById("adrs").value.trim();
+        if(addr.length>2)
+        {     
+            seterror(adrs,"");
+        }
+        else{
+            e.preventDefault();
+            seterror(adrs,"*Enter Address Correctly");
+        }
+         var ph=document.getElementById("Fphone").value;
+        if(ph.length!=10)
+        {
+            e.preventDefault();
+            seterror(Fphone," *Phone Number Is Not Valid")
+        }
+        else{
+            seterror(Fphone,"");
+        }
+         var ph1=document.getElementById("Cphone").value;
+        if(ph1.length!=10)
+        {
+            e.preventDefault();
+            seterror(Cphone,"*Phone Number Is Not Valid")
+        }
+        else{
+            seterror(Cphone,"");
+        }
+        var em=document.getElementById("email").value.trim();
+        const r=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(em.lenght==0)
+        {
+            e.preventDefault();
+            seterror(email,"*Enter Email")
+        }
+        else if(!r.test(em))
+        {
+            e.preventDefault();
+            seterror(email,"*Enter Valid Email")
+        }
+        else{
+            seterror(email,"")
+        }
+        var sel=document.querySelectorAll("select");
+    sel.forEach(v=>{
+        if(v.value==="select")
+        {
+        v.style.border="3px solid blue"
+        e.preventDefault();
+        }
+        else if(v.value!=="select")
+        v.style.border="1px solid black"
+    })
+        var yr=document.getElementsByClassName("year")
+        for (let va of  Array.from(yr)){
+            if(!(parseInt(va.value)>=2000 && va.value<=  new Date().getFullYear()))
+            {
+                va.style.border="3px solid blue";
+                e.preventDefault();
+            }
+            else if(parseInt(va.value)>=2000 && va.value<=new Date().getFullYear())
+        {va.style.border="1px solid black"}
+    }
+        var prc=document.getElementsByClassName("perc")
+        for (let va1 of  Array.from(prc)){
+            if(!(parseInt(va1.value)>=0 && va1.value<=100))
+            {
+                va1.style.border="3px solid blue";
+                e.preventDefault();
+            }
+            else if(parseInt(va1.value)>=0 && va1.value<=100)
+        {va1.style.border="1px solid black"}
+    }
+    var camp=document.getElementsByName("campus")
+        var a=0;
+        camp.forEach((v)=>{
+            if(v.checked)
+            {
+                a=a+1;
+            }
+        })
+        if(a==0)
+        {
+            e.preventDefault();
+           seterror(GEU,"*Atleast select one item")
+        }
+        else{
+            seterror(GEU,"")
+        }
+    var knw=document.getElementsByName("know")
+        var a=0;
+        knw.forEach((v)=>{
+            if(v.checked)
+            {
+                a=a+1;
+            }
+        })
+        if(a==0)
+        {
+            e.preventDefault();
+           seterror(Digital,"*Atleast select one item")
+        }
+        else{
+            seterror(Digital,"")
+        }
+        var bu=document.getElementById("BUOthers").value.trim();
+console.log(bu);
+if(!(bu.length>2))
+{
+    BUOthers.style.border="3px solid blue";
+}
+else if((bu.length>2)){
+    BUOthers.style.border="1px solid black";
+}
+}
+console.log(BUOthers.value)
+
+        function seterror(id,msg)
+        {  
+        id.parentNode.querySelector("span").innerHTML=msg;
+        }
+        function handle()
+        {
+            var exm=document.getElementsByName("exam")
+        var a=0;
+        exm.forEach((v)=>{
+            if(v.checked)
+            {
+                a=a+1;
+            }
+        })
+        if(a!==0)
+        {
+           examinfo.style.display="block";
+        }
+        }
+       async function Capture(e)
+        {
+            let camera_button = document.querySelector("#start-camera");
+let video = document.querySelector("#video");
+let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+	video.srcObject = stream;
+        }
+        let photoClicked = false;
+ function Click1()
+ {
+     let click_button = document.querySelector("#click-photo");
+     let canvas = document.querySelector("#canvas");
+     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+     photoClicked = true;
+ }
+ async function savePhoto() {
+    if(photoClicked)
+    {
+    let image_data_url = canvas.toDataURL('image/jpeg');
+    console.log(image_data_url);
+    let img = new Image();
+    img.className="img-fluid img1"
+    console.log(img)
+    img.src =await canvas.toDataURL('image/jpeg');
+    photoPreview.innerHTML = "";
+    photoPreview.appendChild(img);
+}
+    else{
+        alert("photo is not clicked")
+    }
+  }
+  document.body.blur();
+function cancel()
+{
+    video.srcObject.getTracks().forEach(track => track.stop());
+    document.querySelector("#exampleModal").classList.remove("show");
+    document.querySelector(".modal-backdrop").remove();
+    document.body.classList.remove("modal-open");
+}
+function Close()
+{
+    video.srcObject.getTracks().forEach(track => track.stop());
+    document.querySelector("#exampleModal").classList.remove("show");
+    document.querySelector(".modal-backdrop").remove();
+    document.body.classList.remove("modal-open");
+
+}
+        </script>
+</body>
+</html>
