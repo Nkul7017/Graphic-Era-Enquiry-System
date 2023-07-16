@@ -53,7 +53,7 @@ input::-webkit-inner-spin-button {
 </head>
 <body  class="p-5"  >
     <div class="container">
-        <form  id="frm1" class=" frm1 border-1 rounded-2" style=" padding: 20px;  box-shadow: 5px 5px 20px black;background: -webkit-linear-gradient(left, #f48560e6, #e80734c3);" >
+        <form method="post" id="frm1" class=" frm1 border-1 rounded-2" style=" padding: 20px;  box-shadow: 5px 5px 20px black;background: -webkit-linear-gradient(left, #f48560e6, #e80734c3);" >
             <h1 class=" text-center mb-3 fw-bolder  " style="color:white;text-shadow: 2px 2px 10px black;">REGISTRATION</h1>
             <div class="row mb-3">
                 <div class="col ">
@@ -145,7 +145,7 @@ input::-webkit-inner-spin-button {
                             <option value="Passed">Passed</option>
                             <option value="Appearing">Appearing</option>
                         </select></td>
-                        <td><select name="Board-university10" id="Board-university10" class="form-control">
+                        <td><select name="Boarduniversity10" id="Boarduniversity10" class="form-control">
                             <option value="select">select</option>
                             <option value="CBSE">CBSE</option>
                             <option value="ICSE">ICSE</option>
@@ -160,7 +160,7 @@ input::-webkit-inner-spin-button {
                             <option value="Passed">Passed</option>
                             <option value="Appearing">Appearing</option>
                         </select></td>
-                        <td><select name="Board-university12" id="Board-university12" class="form-control">
+                        <td><select name="Boarduniversity12" id="Board-university12" class="form-control">
                             <option value="select">select</option>
                             <option value="CBSE">CBSE</option>
                             <option value="ICSE">ICSE</option>
@@ -180,24 +180,22 @@ input::-webkit-inner-spin-button {
                             <option value="GEU">GEU</option>
                             <option value="GEHU">GEHU</option>
                             <option value="GEU BHIMTAL">GEU BHIMTAL</option>
+                            <option value="GEU IMS">GEU IMS</option>
                         </select></td> 
                         <td><input type="number" placeholder="Enter..."   name="YearGrad" id="YearGrad" class="form-control year" /></td>
                         <td><input type="number" placeholder="Enter..." name="PerGrad" id="PerGrad" class="form-control perc" /></td>
                     </tr>
-                    <tr>
-                        <th>Others</th>
-                        <td><select name="Others" id="Others" class="form-control">
-                            <option value="select">select</option>
-                            <option value="Passed">Passed</option>
-                            <option value="Appearing">Appearing</option>
-                        </select></td>
-                        <td><input placeholder="Enter..."  type="text" name="BUOthers" id="BUOthers" class="form-control" /></td>
-                        <td><input type="number" placeholder="Enter..." name="YearOthers" id="YearOthers" class="form-control year" /></td>
-                        <td><input type="number" placeholder="Enter..." name="PerOthers" id="PerOthers" class="form-control perc" /></td>
+                  
+                    <tr id="ab">
                     </tr>
                 </tbody>
+            
                 </table>
+                <div>   
+               <label for="otherr" class="fw-bold ms-2"> Others:</label>
+               <input type="radio" name="otherr" id="otherr" oninput="abcd()" class="form-check-input" >
                 <span id="tbl-spn" class="mb-0 fw-semibold" style="color: blue"></span>
+            </div>
                 </div>
             </div>
         </div>
@@ -221,6 +219,8 @@ input::-webkit-inner-spin-button {
                 <input type="radio" id="GEHU" name="campus" class="form-check-input" value="GEHU Dehradun">
                 <label for="Bhimtal" class="fw-semibold">GEU Bhimtal</label>
                 <input type="radio" id="Bhimtal" name="campus" class="form-check-input" value="GEU Bhimtal">
+                <label for="IMS" class="fw-semibold">GEU IMS</label>
+                <input type="radio" id="IMS" name="campus" class="form-check-input" value="GEU IMS">
             </div>
         </div>
         <div class="row mb-2">
@@ -228,8 +228,8 @@ input::-webkit-inner-spin-button {
                 <p class="d-inline fw-bolder">Entrance Exam Appared: &nbsp;</p> <br>
                 <span class="mb-0 fw-semibold" style="color: blue"></span>
                 <label for="CAT" class="fw-semibold">CAT</label>
-                <input type="radio" id="CAT" name="exam" class="form-check-input" onchange="handle()" value="CAt/MAT">
-                <label for="JEE" class="fw-semibold">JEE MAINS</label>
+                <input type="radio"  id="CAT" name="exam" class="form-check-input" onchange="handle()" value="CAt/MAT">
+                <label for="JEE"  class="fw-semibold">JEE MAINS</label>
                 <input type="radio" id="JEE" name="exam" class="form-check-input" onchange="handle()" value="JEE"><br>
                 <div class="row" id="examinfo" style="display:none;">
                     <div class="col-sm-3">
@@ -249,13 +249,13 @@ input::-webkit-inner-spin-button {
                 <p class="d-inline fw-bolder">How did you come to know about Graphic Era University? &nbsp;</p> <br>
                 <span class="mb-0 fw-semibold" style="color: blue"></span>
                 <label for="Digital" class="fw-semibold">Digital Media</label>
-                <input type="radio" id="Digital" name="know" class="form-check-input" value="male">
+                <input type="radio" id="Digital" name="know" class="form-check-input" value="Digital Media">
                 <label for="Print" class="fw-semibold">Print Media</label>
-                <input type="radio" id="Print" name="know" class="form-check-input" value="female">
+                <input type="radio" id="Print" name="know" class="form-check-input" value="Print Media">
                 <label for="Electronic" class="fw-semibold">Electronic Media</label>
-                <input type="radio" id="Electronic" name="know" class="form-check-input" value="female">
+                <input type="radio" id="Electronic" name="know" class="form-check-input" value="Electronic Media">
                 <label for="OthersM" class="fw-semibold">Others</label>
-                <input type="radio" id="OthersM" name="know" class="form-check-input" value="female">
+                <input type="radio" id="OthersM" name="know" class="form-check-input" value="Others">
             </div>
         </div>
         <div class="row mb-2">
@@ -263,11 +263,13 @@ input::-webkit-inner-spin-button {
                 <button  type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
+        <input type="text" name="image" style="display: none;" />
     </form>
         </div>
     </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script>
+            let check=0,check2=0,str;
               document.body.addEventListener('keypress', function(event) {
         if (event.keyCode == 13) {
             event.preventDefault();
@@ -414,6 +416,8 @@ input::-webkit-inner-spin-button {
         else{
             seterror(Digital,"")
         }
+        if(check==1)
+        {
         var bu=document.getElementById("BUOthers").value.trim();
 console.log(bu);
 if(!(bu.length>2))
@@ -422,9 +426,32 @@ if(!(bu.length>2))
 }
 else if((bu.length>2)){
     BUOthers.style.border="1px solid black";
+}}
+var exm=document.getElementsByName("exam")
+exm.forEach((v)=>{
+    if(v.checked)
+    { console.log("hello");
+                if(parseInt(cmscore.value)>0&&cmrno.value.trim().length>0)
+        {
+            seterror(JEE,"");
+        }
+        else{seterror(JEE,"Enter details");
+e.preventDefault();
+        }
+    }
+})
+if(check2==1)
+{
+    console.log("hhello")
+    frm1.image.value=str;
+}
+else{
+    if(check2==0)
+    {console.log("hi")
+        e.preventDefault();
+    }
 }
 }
-console.log(BUOthers.value)
 
         function seterror(id,msg)
         {  
@@ -463,14 +490,18 @@ let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: fal
  async function savePhoto() {
     if(photoClicked)
     {
+        check2=1;
     let image_data_url = canvas.toDataURL('image/jpeg');
     console.log(image_data_url);
+    str=image_data_url;
     let img = new Image();
     img.className="img-fluid img1"
+    img.name="image";
     console.log(img)
     img.src =await canvas.toDataURL('image/jpeg');
     photoPreview.innerHTML = "";
     photoPreview.appendChild(img);
+    
 }
     else{
         alert("photo is not clicked")
@@ -492,6 +523,22 @@ function Close()
     document.body.classList.remove("modal-open");
 
 }
+function abcd()
+{
+    if(document.getElementById("otherr").checked)
+    { check=1;
+        document.getElementById("ab").innerHTML= `<th >Others</th>
+        <td><select name="Others" id="Others" class="form-control">
+            <option value="select">select</option>
+            <option value="Passed">Passed</option>
+            <option value="Appearing">Appearing</option>
+        </select></td>
+        <td><input placeholder="Enter..."  type="text" name="BUOthers" id="BUOthers" class="form-control" /></td>
+        <td><input type="number" placeholder="Enter..." name="YearOthers" id="YearOthers" class="form-control year" /></td>
+        <td><input type="number" placeholder="Enter..." name="PerOthers" id="PerOthers" class="form-control perc" /></td>`
+    }
+}
+
         </script>
 </body>
 </html>

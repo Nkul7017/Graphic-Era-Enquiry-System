@@ -26,30 +26,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body >
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class=" d-flex justify-content-center align-items-center" style="width:98vw;height:98vh">
-                <form id="frm1" class="border-1 rounded-2"  id="frm1" style=" padding:5vw;  box-shadow: 5px 5px 20px black;background: -webkit-linear-gradient(left, #f485609e, #fc2b71d0);" >
+                <form action="/login" id="frm1" method="post" class="border-1 rounded-2"  style=" padding:5vw;  box-shadow: 5px 5px 20px black;background: -webkit-linear-gradient(left, #f485609e, #fc2b71d0);" >
                     <h1 class=" text-center mb-3 fw-bolder  " style="color:white;text-shadow: 2px 2px 10px black;">LOGIN</h1>
+                    <h3><%=msg%></h3>
                     <div class="row  mb-2 ">
                         <div class="col">
                             <label for="email" class="fw-bold">Email</label><span class="mb-0 fw-semibold" style="color: blue;"></span>
-                            <input type="email" id="email" placeholder="Enter..." class="form-control border-2 border-black border-opacity-50">
+                            <input type="email" name="email" id="email" placeholder="Enter..." class="form-control border-2 border-black border-opacity-50">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label for="pswd" class="fw-bold">Password</label><span class="mb-0 fw-semibold" style="color: blue;"></span>
-                            <input type="password" id="pswd" placeholder="Enter..." class="form-control border-2 border-black border-opacity-50">
+                            <input type="password" name="password" id="pswd" placeholder="Enter..." class="form-control border-2 border-black border-opacity-50">
                         </div>
-                       
                     </div>
                     <div class="row mb-2">
                         <div class="col">
                             <button  type="submit" class="btn btn-success ">Submit</button>
-                            <a type="submit" class="btn btn-primary" href="/password.html" >Forget Password</a>
+                            <a type="submit" class="btn btn-primary" href="/password" >Forget Password</a>
                         </div>
                     </div>
-              
             </form></div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -75,7 +74,7 @@
             seterror(email,"")
         }
         var ps=document.getElementById("pswd").value.trim();
-        if((ps.length>5 && ps.length<9))
+        if((ps.length>5 && ps.length<12))
         {
             seterror(pswd,"");
         }
